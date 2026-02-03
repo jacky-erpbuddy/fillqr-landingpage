@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initCaptcha();
     initCopyButton();
     initScrollToForm();
+    initOpenEmail();
 });
 
 /**
@@ -237,6 +238,18 @@ function initScrollToForm() {
             top: targetPosition,
             behavior: 'smooth'
         });
+    });
+}
+
+/**
+ * Open Email Button - oeffnet Mailprogramm via JavaScript
+ */
+function initOpenEmail() {
+    const emailBtn = document.getElementById('open-email-btn');
+    if (!emailBtn) return;
+
+    emailBtn.addEventListener('click', function() {
+        window.location.href = 'mailto:info@erp-buddy.de?subject=[FillQR] Interesse';
     });
 }
 

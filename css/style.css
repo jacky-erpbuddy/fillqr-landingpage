@@ -1084,16 +1084,15 @@ ul {
     margin: 0 auto;
 }
 
-@media (min-width: 768px) {
+/* Ab Tablet: 2 Spalten Standard, aber 3 Spalten fuer --three */
+@media (min-width: 600px) {
     .contact-options {
         grid-template-columns: repeat(2, 1fr);
     }
-}
 
-/* Auf kleinen Screens (Mobile) stapeln */
-@media (max-width: 599px) {
-    .contact-options--three {
-        grid-template-columns: 1fr;
+    /* 3 Boxen IMMER nebeneinander (ueberschreibt 2-spaltig) */
+    .contact-options.contact-options--three {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
