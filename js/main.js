@@ -226,11 +226,12 @@ function initScrollToForm() {
     if (!scrollBtn) return;
 
     scrollBtn.addEventListener('click', function() {
-        const form = document.getElementById('contact-form');
-        if (!form) return;
+        // Scroll zur Formular-Ueberschrift, nicht zum Formular selbst
+        const formWrapper = document.querySelector('.contact-form-wrapper');
+        if (!formWrapper) return;
 
         const headerHeight = document.querySelector('.header').offsetHeight;
-        const targetPosition = form.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+        const targetPosition = formWrapper.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
 
         window.scrollTo({
             top: targetPosition,

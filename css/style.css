@@ -1031,9 +1031,14 @@ ul {
 .contact-options {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
-    max-width: 600px;
+    gap: var(--spacing-md);
+    max-width: 900px;
     margin: 0 auto var(--spacing-lg);
+}
+
+/* 3 Boxen nebeneinander ab 600px */
+.contact-options--three {
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .contact-option {
@@ -1083,10 +1088,12 @@ ul {
     .contact-options {
         grid-template-columns: repeat(2, 1fr);
     }
+}
 
+/* Auf kleinen Screens (Mobile) stapeln */
+@media (max-width: 599px) {
     .contact-options--three {
-        grid-template-columns: repeat(3, 1fr);
-        max-width: 900px;
+        grid-template-columns: 1fr;
     }
 }
 
