@@ -5,8 +5,8 @@
  * Credentials stored in .env (not in browser-visible code)
  */
 
-// Load .env from parent directory
-$envFile = dirname(__DIR__) . '/.env';
+// Load .env from project root (outside public/)
+$envFile = dirname(__DIR__, 2) . '/.env';
 if (file_exists($envFile)) {
     $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
     foreach ($lines as $line) {
