@@ -480,19 +480,28 @@
                         <!-- Captcha -->
                         <div class="contact__field contact__captcha">
                             <label for="captcha" class="contact__label">Spam-Schutz: Was ist <span id="captcha-question"></span>? *</label>
-                            <input type="text" id="captcha" name="captcha" class="contact__input contact__input--small" required placeholder="Ihre Antwort" autocomplete="off">
+                            <input type="text" id="captcha" name="captcha" class="contact__input contact__input--small" required placeholder="Deine Antwort" autocomplete="off">
                         </div>
 
                         <!-- Privacy Checkbox -->
                         <div class="contact__field contact__privacy">
                             <label class="contact__checkbox">
                                 <input type="checkbox" id="privacy" name="privacy" required>
-                                <span class="contact__checkbox-text">Ich habe die <a href="datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu. Es gelten die <a href="nutzungsbedingungen" target="_blank" rel="noopener">Nutzungsbedingungen</a>. *</span>
+                                <span class="contact__checkbox-text">Ich habe die <a href="datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen. Es gelten die <a href="nutzungsbedingungen" target="_blank" rel="noopener">Nutzungsbedingungen</a>. *</span>
                             </label>
                         </div>
 
                         <!-- Submit -->
                         <button type="submit" class="btn btn--gradient btn--full">Anfrage senden</button>
+
+                        <!-- Rechtlicher Hinweis -->
+                        <p class="contact__hint">
+                            Deine Anfrage wird https-verschlüsselt an unseren Server übermittelt.
+                            Mit dem Absenden der Anfrage verarbeiten wir die von dir angegebenen
+                            Daten ausschließlich zum Zweck der Bearbeitung deiner Anfrage
+                            (vorvertragliche Maßnahmen).
+                            Weitere Informationen findest du in unserer <a href="datenschutz">Datenschutzerklärung</a>.
+                        </p>
 
                     </form>
                     </div>
