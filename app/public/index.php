@@ -79,7 +79,7 @@ $pageTitle = 'Aufnahmeantrag ' . $tenantName;
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title><?= htmlspecialchars($pageTitle) ?></title>
 
-  <link rel="stylesheet" href="/assets/css/base.css?v=1">
+  <link rel="stylesheet" href="/assets/css/base.css?v=2">
 
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
@@ -391,12 +391,12 @@ $pageTitle = 'Aufnahmeantrag ' . $tenantName;
       var storageKey = 'fillqr-theme';
 
       function applyTheme(theme) {
-        if (theme === 'dark') {
-          body.classList.add('theme-dark');
-          if (toggle) toggle.textContent = '☀ Hell';
-        } else {
-          body.classList.remove('theme-dark');
+        if (theme === 'light') {
+          body.classList.add('theme-light');
           if (toggle) toggle.textContent = '🌙 Dunkel';
+        } else {
+          body.classList.remove('theme-light');
+          if (toggle) toggle.textContent = '☀ Hell';
         }
       }
 
@@ -409,17 +409,15 @@ $pageTitle = 'Aufnahmeantrag ' . $tenantName;
       if (stored === 'dark' || stored === 'light') {
         applyTheme(stored);
       } else {
-        // Optional: System-Preference als Default
-        var prefersDark = window.matchMedia &&
-                          window.matchMedia('(prefers-color-scheme: dark)').matches;
-        applyTheme(prefersDark ? 'dark' : 'light');
+        // Default ist Dark (passend zur Landingpage)
+        applyTheme('dark');
       }
 
       // 2) Klick-Handler
       if (toggle) {
         toggle.addEventListener('click', function () {
-          var isDark = body.classList.contains('theme-dark');
-          var next = isDark ? 'light' : 'dark';
+          var isLight = body.classList.contains('theme-light');
+          var next = isLight ? 'dark' : 'light';
           applyTheme(next);
           try {
             window.localStorage.setItem(storageKey, next);

@@ -94,7 +94,7 @@ $warningMessages = [
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <!-- gemeinsame Basis-Styles -->
-  <link rel="stylesheet" href="/assets/css/base.css?v=1">
+  <link rel="stylesheet" href="/assets/css/base.css?v=2">
 
   <!-- Detail-spezifische Styles -->
   <style>
@@ -104,69 +104,17 @@ $warningMessages = [
     }
 
     .card--admin {
-      padding: 16px 18px 20px;
-    }
-
-    h1 {
-      margin: 0 0 6px;
-      font-size: 1.5rem;
-    }
-
-    .subtitle {
-      margin: 0 0 16px;
-      font-size: 0.9rem;
-      color: var(--color-text-muted);
-    }
-
-    .back-link {
-      margin-bottom: 8px;
-      font-size: 0.9rem;
+      padding: var(--spacing-md) var(--spacing-md) var(--spacing-lg);
     }
 
     /* Kopfzeile mit Status / Form */
     .status-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px 16px;
+      gap: 10px var(--spacing-md);
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 8px;
-    }
-
-    .status-pill {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-      border: 1px solid var(--color-border);
-      color: var(--color-text-muted);
-      background: #fff;
-    }
-
-    .status-pill.status-new {
-      border-color: var(--color-primary);
-      color: var(--color-primary);
-      background: #e7f1ff;
-    }
-
-    .status-pill.status-warn {
-      border-color: #dc3545;
-      color: #dc3545;
-      background: #fde2e4;
-    }
-
-    .tag {
-      display: inline-block;
-      padding: 1px 6px;
-      border-radius: 999px;
-      font-size: 0.7rem;
-      border: 1px solid #ced4da;
-      color: #495057;
-      background: #fff;
-      margin-left: 6px;
+      margin-bottom: var(--spacing-sm);
     }
 
     .status-form {
@@ -182,101 +130,39 @@ $warningMessages = [
     }
 
     .status-form select {
-      padding: 3px 6px;
-      border-radius: 6px;
+      padding: 5px 8px;
+      border-radius: var(--radius-md);
       border: 1px solid var(--color-border);
       font: inherit;
-      background: #fff;
+      font-size: var(--font-size-sm);
+      background: rgba(26, 26, 36, 0.6);
+      color: var(--color-text);
+    }
+
+    .status-form select:focus {
+      outline: none;
+      border-color: var(--color-cyan);
     }
 
     .status-form button {
-      padding: 4px 10px;
-      border-radius: 999px;
+      padding: 5px 14px;
+      border-radius: var(--radius-md);
       border: none;
-      background: var(--color-primary);
-      color: #fff;
+      background: linear-gradient(135deg, var(--color-cyan) 0%, var(--color-green) 100%);
+      color: var(--color-bg);
       font-size: 0.8rem;
+      font-weight: 600;
       cursor: pointer;
+      transition: all var(--transition-normal);
     }
 
     .status-form button:hover {
-      opacity: 0.9;
+      box-shadow: 0 0 20px rgba(91, 203, 222, 0.4);
+      transform: translateY(-1px);
     }
 
-    h2 {
-      margin: 12px 0 6px;
-      font-size: 1.0rem;
-    }
-
-    dl {
-      margin: 0;
-      display: grid;
-      grid-template-columns: 160px 1fr;
-      grid-row-gap: 4px;
-      grid-column-gap: 10px;
-      font-size: 0.9rem;
-    }
-
-    dt {
-      font-weight: 600;
-      color: var(--color-text-muted);
-    }
-
-    dd {
-      margin: 0;
-    }
-
-    .muted {
-      color: var(--color-text-muted);
-      font-size: 0.85rem;
-    }
-
-    .back-link a {
-      color: var(--color-primary);
-      text-decoration: none;
-    }
-
-    .back-link a:hover {
-      text-decoration: underline;
-    }
-
-    .warn-list {
-      margin: 4px 0 0;
-      padding-left: 18px;
-      font-size: 0.85rem;
-      color: #842029;
-    }
-
-    /* Mitgliedsfoto kompakt anzeigen */
-    .member-photo {
-      max-width: 240px;
-      max-height: 240px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid var(--color-border);
-      background: #111827;
-    }
-
-    .member-photo img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* Bild füllt den Rahmen, ohne verzerrt zu wirken */
-    }
-
-
-    /* Handy: Spalten im dl etwas schmaler */
+    /* Mobile Detail */
     @media (max-width: 640px) {
-      dl {
-        grid-template-columns: 130px 1fr;
-      }
-    }
-
-    /* ---------------------------------------
-       Detailseite: Mobile-Ansicht
-       --------------------------------------- */
-    @media (max-width: 640px) {
-      /* Status-Zeile untereinander statt nebeneinander */
       .status-row {
         flex-direction: column;
         align-items: flex-start;
@@ -288,23 +174,19 @@ $warningMessages = [
         justify-content: flex-start;
       }
 
-      /* dl-Gitter auf eine Spalte herunterfahren */
       dl {
         grid-template-columns: 1fr;
       }
 
       dl dt {
-        margin-top: 8px;
+        margin-top: var(--spacing-xs);
       }
 
-      /* Foto auf kleinen Screens etwas flexibler */
       .member-photo {
         max-width: 260px;
         width: 100%;
       }
     }
-
-
   </style>
 </head>
 

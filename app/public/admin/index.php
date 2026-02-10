@@ -96,7 +96,7 @@ $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <!-- gemeinsame Basis-Styles -->
-  <link rel="stylesheet" href="/assets/css/base.css?v=1">
+  <link rel="stylesheet" href="/assets/css/base.css?v=2">
 
   <!-- Admin-spezifische Styles – bauen auf base.css auf -->
   <style>
@@ -108,24 +108,13 @@ $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     /* Karte im Admin etwas kompakter */
     .card--admin {
-      padding: 16px 16px 20px;
-    }
-
-    h1 {
-      margin: 0 0 4px;
-      font-size: 1.6rem;
-    }
-
-    .subtitle {
-      margin: 0 0 8px;
-      font-size: 0.9rem;
-      color: var(--color-text-muted);
+      padding: var(--spacing-md) var(--spacing-md) var(--spacing-lg);
     }
 
     /* Filterleiste */
     .filter-bar {
-      margin: 0 0 12px;
-      font-size: 0.9rem;
+      margin: 0 0 var(--spacing-sm);
+      font-size: var(--font-size-sm);
       display: flex;
       flex-wrap: wrap;
       align-items: flex-end;
@@ -147,27 +136,40 @@ $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
     .filter-bar select,
     .filter-bar input[type="date"],
     .filter-bar input[type="text"] {
-      padding: 4px 8px;
+      padding: 6px 10px;
       font: inherit;
-      border-radius: 6px;
+      font-size: var(--font-size-sm);
+      border-radius: var(--radius-md);
       border: 1px solid var(--color-border);
-      background: #fff;
+      background: rgba(26, 26, 36, 0.6);
+      color: var(--color-text);
       min-width: 120px;
     }
 
+    .filter-bar select:focus,
+    .filter-bar input[type="date"]:focus,
+    .filter-bar input[type="text"]:focus {
+      outline: none;
+      border-color: var(--color-cyan);
+      box-shadow: 0 0 0 3px rgba(91, 203, 222, 0.15);
+    }
+
     .btn-small {
-      padding: 5px 12px;
+      padding: 6px 16px;
       font: inherit;
-      font-size: 0.85rem;
-      border-radius: 999px;
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      border-radius: var(--radius-md);
       border: none;
-      background: var(--color-primary);
-      color: #fff;
+      background: linear-gradient(135deg, var(--color-cyan) 0%, var(--color-green) 100%);
+      color: var(--color-bg);
       cursor: pointer;
+      transition: all var(--transition-normal);
     }
 
     .btn-small:hover {
-      background: var(--color-primary-dk);
+      box-shadow: 0 0 20px rgba(91, 203, 222, 0.4);
+      transform: translateY(-1px);
     }
 
     .link-reset {
@@ -176,10 +178,10 @@ $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
       text-decoration: none;
     }
     .link-reset:hover {
-      text-decoration: underline;
+      color: var(--color-cyan);
     }
 
-    /* Tabelle + Wrapper (für Desktop / großes Layout) */
+    /* Tabelle + Wrapper */
     .table-wrapper {
       width: 100%;
       overflow-x: auto;
@@ -188,75 +190,35 @@ $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.85rem;
+      font-size: var(--font-size-sm);
     }
 
     thead {
-      background: #f1f3f8;
+      background: var(--color-bg-light);
     }
 
-    th,
-    td {
-      padding: 6px 8px;
-      border-bottom: 1px solid #e1e4ec;
+    th {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--color-border);
       text-align: left;
       vertical-align: top;
-    }
-
-    tbody tr:nth-child(2n) {
-      background: #fafbff;
-    }
-
-    .status-pill {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-size: 0.75rem;
+      color: var(--color-cyan);
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: .04em;
-      border: 1px solid var(--color-border);
-      color: var(--color-text-muted);
-      background: #fff;
-    }
-
-    .status-pill.status-new {
-      border-color: var(--color-primary);
-      color: var(--color-primary);
-      background: #e7f1ff;
-    }
-
-    .status-pill.status-warn {
-      border-color: #dc3545;
-      color: #dc3545;
-      background: #fde2e4;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 1px 6px;
-      border-radius: 999px;
-      font-size: 0.7rem;
-      border: 1px solid #ced4da;
-      color: #495057;
-      background: #fff;
-    }
-
-    .muted {
-      color: var(--color-text-muted);
       font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
     }
 
-    .nowrap {
-      white-space: nowrap;
+    td {
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--color-border);
+      text-align: left;
+      vertical-align: top;
+      color: var(--color-text);
     }
 
-    a {
-      color: var(--color-primary);
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
+    tbody tr:hover {
+      background: rgba(91, 203, 222, 0.05);
     }
 
     /* Standard: Desktop-Tabelle, Mobile-Karten verstecken */
@@ -271,7 +233,6 @@ $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
         max-width: 100%;
       }
 
-      /* Filterleiste untereinander */
       .filter-bar {
         flex-direction: column;
         align-items: stretch;
@@ -293,7 +254,6 @@ $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
         gap: 8px;
       }
 
-      /* Tabellenkopf & Desktop-Zeilen ausblenden */
       thead {
         display: none;
       }
@@ -306,7 +266,6 @@ $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
         display: table-row;
       }
 
-      /* Abstand zwischen Karten */
       table {
         border-collapse: separate;
         border-spacing: 0 8px;
@@ -319,10 +278,11 @@ $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       .app-card {
         background: var(--color-bg-card);
-        border-radius: 12px;
-        padding: 10px 12px;
-        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+        border-radius: var(--radius-lg);
+        padding: var(--spacing-sm) var(--spacing-md);
+        box-shadow: var(--shadow-card);
         border: 1px solid var(--color-border);
+        backdrop-filter: blur(10px);
       }
 
       .app-card-top {
@@ -330,22 +290,18 @@ $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
         justify-content: space-between;
         align-items: center;
         gap: 8px;
-        margin-bottom: 4px;
+        margin-bottom: var(--spacing-xs);
       }
 
       .app-card-id {
         font-size: 0.8rem;
         font-weight: 600;
-        color: var(--color-text-muted);
+        color: var(--color-cyan);
       }
 
       .app-card-main {
         font-size: 0.95rem;
-        margin-bottom: 4px;
-      }
-
-      .app-card-main .muted {
-        font-size: 0.8rem;
+        margin-bottom: var(--spacing-xs);
       }
 
       .app-card-meta {
@@ -354,13 +310,13 @@ $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
         display: flex;
         flex-wrap: wrap;
         gap: 6px 12px;
-        margin-bottom: 4px;
+        margin-bottom: var(--spacing-xs);
       }
 
       .app-card-secondary {
         font-size: 0.8rem;
         color: var(--color-text-muted);
-        margin-bottom: 6px;
+        margin-bottom: var(--spacing-xs);
       }
 
       .app-card-secondary div {
@@ -370,18 +326,12 @@ $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
       .app-card-actions {
         display: flex;
         justify-content: flex-end;
-        font-size: 0.85rem;
+        font-size: var(--font-size-sm);
       }
     }
 
-    /* ganz kleines Handy: Schrift noch etwas kleiner */
     @media (max-width: 640px) {
-      table,
-      thead,
-      tbody,
-      tr,
-      td,
-      th {
+      table, thead, tbody, tr, td, th {
         font-size: 0.8rem;
       }
     }

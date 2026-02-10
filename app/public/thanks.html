@@ -1,6 +1,76 @@
-<!doctype html><meta charset="utf-8">
-<title>Danke</title>
-<body style="font-family:system-ui;max-width:720px;margin:24px auto;padding:0 16px">
-  <h1>Danke! ✅</h1>
-  <p>Ihr Antrag wurde gespeichert. Sie erhalten zeitnah eine Rückmeldung.</p>
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Danke – Antrag eingereicht</title>
+  <link rel="stylesheet" href="/assets/css/base.css?v=2">
+  <style>
+    .thanks-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-lg) var(--spacing-sm);
+    }
+
+    .thanks-card {
+      background: var(--color-bg-card);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xl);
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--color-border);
+      text-align: center;
+      max-width: 520px;
+      width: 100%;
+    }
+
+    .thanks-icon {
+      font-size: 3rem;
+      margin-bottom: var(--spacing-md);
+      display: block;
+    }
+
+    .thanks-card h1 {
+      font-size: var(--font-size-2xl);
+      margin-bottom: var(--spacing-md);
+      display: block;
+    }
+
+    .thanks-card p {
+      color: var(--color-text-muted);
+      font-size: var(--font-size-lg);
+      line-height: 1.8;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .thanks-card a {
+      display: inline-block;
+      padding: var(--spacing-sm) var(--spacing-lg);
+      background: transparent;
+      color: var(--color-cyan);
+      border: 1px solid var(--color-cyan);
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      font-family: inherit;
+      transition: all var(--transition-normal);
+    }
+
+    .thanks-card a:hover {
+      background: var(--color-cyan);
+      color: var(--color-bg);
+    }
+  </style>
+</head>
+<body>
+  <div class="thanks-page">
+    <div class="thanks-card">
+      <span class="thanks-icon">&#10003;</span>
+      <h1>Vielen Dank!</h1>
+      <p>Ihr Antrag wurde erfolgreich eingereicht. Sie erhalten zeitnah eine Rückmeldung von Ihrem Verein.</p>
+      <a href="/">Neuen Antrag stellen</a>
+    </div>
+  </div>
 </body>
+</html>
